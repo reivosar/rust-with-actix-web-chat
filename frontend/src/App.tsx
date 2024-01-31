@@ -50,7 +50,7 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-200 flex items-center justify-center">
-      <div className="bg-white shadow-md rounded-lg w-96">
+      <div className="bg-white shadow-md rounded-lg w-128">
         <div className="p-4">
           <div className="font-bold text-xl text-gray-800 mb-2">SampleChat</div>
           <div
@@ -77,7 +77,7 @@ const App = () => {
           <div className="flex mt-4">
             <input
               type="text"
-              placeholder="メッセージを入力..."
+              placeholder="Enter a message..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
               className="flex-grow rounded-l-lg border border-gray-300 p-2"
@@ -86,7 +86,7 @@ const App = () => {
               onClick={handleUserMessage}
               className="bg-blue-400 text-white p-2 rounded-r-lg"
             >
-              送信
+              Send
             </button>
           </div>
         </div>
