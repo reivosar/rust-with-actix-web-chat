@@ -1,0 +1,15 @@
+version: '3'
+services:
+  react-app:
+    build:
+      context: ./frontend 
+    ports:
+      - "5173:5173" 
+    environment:
+      - REACT_APP_BACKEND_URL=http://rust-app:3030 
+
+  rust-app:
+    build:
+      context: ./backend 
+    ports:
+      - "3030:3030"
