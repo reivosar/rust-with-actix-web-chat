@@ -80,6 +80,11 @@ const App = () => {
               placeholder="Enter a message..."
               value={inputMessage}
               onChange={(e) => setInputMessage(e.target.value)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                  handleUserMessage();
+                }
+              }}
               className="flex-grow rounded-l-lg border border-gray-300 p-2"
             />
             <button
