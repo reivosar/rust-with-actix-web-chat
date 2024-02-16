@@ -24,8 +24,11 @@ async fn handle_connection(stream: tokio::net::TcpStream) {
     while let Some(message) = read.next().await {
         match message {
             Ok(msg) => {
-                if msg.is_text() || msg.is_binary() {
-                    write.send(msg).await.unwrap();
+                if msg.is_text() {
+                    let text = msg.to_text().unwrap();
+                    let modified_text = format!("{} Received", text);
+                    let new_msg = tokio_tungstenite::tungstenite::protocol::Message::text(modified_text);
+                    write.send(new_msg).await.unwrap();
                 }
             }
             Err(e) => {
