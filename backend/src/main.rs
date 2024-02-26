@@ -16,10 +16,10 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let db_client = DbConnectionManager::new_connection().await?;
 
     while let Ok((stream, _)) = listener.accept().await {
-        let db_client_clone = db_client.clone();
         tokio::spawn(async move {
             match accept_async(stream).await {
                 Ok(ws_stream) => {
+                    let db_client_clone = db_client.clone();
                     if let Err(e) = handle_message(db_client_clone, ws_stream).await {
                         println!("Error processing message: {}", e);
                     }
