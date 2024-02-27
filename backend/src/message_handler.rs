@@ -2,8 +2,8 @@ use tokio::net::TcpStream;
 use futures::{StreamExt, SinkExt};
 use tokio_tungstenite::{tungstenite::protocol::Message, WebSocketStream};
 use std::sync::Arc;
-use tokio_postgres::{Client};
-use crate::{message_repository::{self, MessageRepository}};
+use tokio_postgres::Client;
+use crate::message_repository;
 
 pub async fn handle_message(db_client: Arc<Client>, ws_stream: WebSocketStream<TcpStream>) -> Result<(), Box<dyn std::error::Error>> {
     let (mut write, mut read) = ws_stream.split();
