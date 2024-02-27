@@ -11,7 +11,7 @@ impl DbConnectionManager {
             env::var("DB_USER").expect("DB_USER not set"),
             env::var("DB_PASSWORD").expect("DB_PASSWORD not set"),
             env::var("DB_HOST").expect("DB_HOST not set"),
-            "5432", 
+            env::var("DB_PORT").expect("DB_PORT not set"),
             env::var("DB_NAME").expect("DB_NAME not set")
         );
     
